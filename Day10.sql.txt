@@ -1,0 +1,85 @@
+Lab: Use the same student management system Database and table from previous
+lab.Perform the following commands on the table Student and Enrollment.
+_______________________________________________________________________________________________________________________________________________________________________
+mysql> show databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| bankaccountmanagementsystem |
+| ecommerce                   |
+| employeerecords             |
+| information_schema          |
+| mysql                       |
+| performance_schema          |
+| sakila                      |
+| studentmanagementsystem     |
+| sys                         |
+| world                       |
++-----------------------------+
+10 rows in set (0.26 sec)
+
+mysql> use studentmanagementsystem
+Database changed
+
+/*Retrieves all records from the 'Student' table, displaying student information such as ID, first name, last name, date of birth, gender, email, and phone number*/
+mysql> select * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.04 sec)
+
+/*Retrieves all records from the 'Enrollment' table, showing enrollment details including enrollment ID, date, student ID, course ID, and instructor ID*/
+mysql> select * from Enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | StudentID | CourseID | InstructorID |
++--------------+----------------+-----------+----------+--------------+
+| E01          | 2023-08-19     | S01       | C01      | I01          |
+| E02          | 2023-09-19     | S02       | C02      | I02          |
+| E03          | 2023-10-19     | S03       | C03      | I03          |
+| E04          | 2023-11-19     | S04       | C04      | I04          |
+| E05          | 2023-12-19     | S05       | C05      | I05          |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.01 sec)
+______________________________________________________________________________________________________________________________________________________________________________
+1. Assume a university where students can enroll in various courses.Now, write down a FULL outer JOIN query to retrieve the details.
+
+/* This query retrieves details of Students and their Enrollments using a FULL OUTER JOIN.
+It combines records from both tables, including unmatched rows from both Student and Enrollment tables.
+The LEFT JOIN and UNION combination simulates a FULL OUTER JOIN */
+
+mysql> select * from Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+-----------+----------+--------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      | EnrollmentID | EnrollmentDate | StudentID | CourseID | InstructorID |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+-----------+----------+--------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 | E01          | 2023-08-19     | S01       | C01      | I01          |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 | E02          | 2023-09-19     | S02       | C02      | I02          |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 | E03          | 2023-10-19     | S03       | C03      | I03          |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 | E04          | 2023-11-19     | S04       | C04      | I04          |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 | E05          | 2023-12-19     | S05       | C05      | I05          |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+______________________________________________________________________________________________________________________________________________________________________________
+2. Assume a university where students can enroll in various courses.Now, write down a Natural JOIN query to retrieve the details.
+
+/*This query retrieves details of Students and their Enrollments using a NATURAL JOIN.The NATURAL JOIN automatically joins tables based on columns with the same name.*/
+
+mysql> select * from Student
+    -> NATURAL JOIN
+    -> Enrollment;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+----------+--------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      | EnrollmentID | EnrollmentDate | CourseID | InstructorID |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+----------+--------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 | E01          | 2023-08-19     | C01      | I01          |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 | E02          | 2023-09-19     | C02      | I02          |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 | E03          | 2023-10-19     | C03      | I03          |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 | E04          | 2023-11-19     | C04      | I04          |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 | E05          | 2023-12-19     | C05      | I05          |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+--------------+----------------+----------+--------------+
+5 rows in set (0.00 sec)
+_____________________________________________________________________________________________________________________________________________________________________________

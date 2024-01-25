@@ -1,0 +1,189 @@
+mysql> /* DAY 7 */
+________________________________________________________________________________________________________________________
+mysql> /* ASSIGNMENT 1 */
+
+mysql> use studentmanagementsystem;
+Database changed
+mysql> select * from student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.02 sec)
+
+mysql> /* TASK 1 */
+
+mysql> /* Retrieving information about students born after January 1, 1990 */
+mysql> select * from Student where DateOfBirth > '1990-01-01';
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email             | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com    | 7076787314 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com | 7872423542 |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+2 rows in set (0.00 sec)
+_______________________________________________________________________________________________________________________
+mysql> /* TASK 2 */
+
+mysql> /* Retrieving records of Students whose first names start with either 'A' or 'J' */
+mysql> select * from Student where FirstName like 'S%' or FirstName like 'N%';
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com     | 7477885349 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+2 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________________________
+mysql> /* TASK 3 */
+
+mysql> /* Retrieving records of Students whose first names is not 'The Name' and email addresses contain the domain '@example.com' */
+mysql> select * from Student where not FirstName like 'Krishna' and Email like '%@gmail.com';
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com      | 7076787314 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com   | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com     | 7477885349 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> /* Retrieving records of Students whose first names is not 'The Name' and email addresses is not '@example.com' */
+mysql> select * from Student where not FirstName like 'Krishna' and not Email like '%batakrishna@gmail.com';
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com      | 7076787314 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com   | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com     | 7477885349 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________
+mysql> /* ASSIGNMENT 2 */
+mysql> /* TASK 1 */
+
+mysql> create database EmployeeRecords;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> use EmployeeRecords;
+Database changed
+mysql> /* Creating the Person Table */
+mysql> create Table Person (
+    -> Person_ID int primary key,
+    -> First_name varchar(30),
+    -> Last_name varchar(30),
+    -> Age int
+    -> );
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> desc Person;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Person_ID  | int         | NO   | PRI | NULL    |       |
+| First_name | varchar(30) | YES  |     | NULL    |       |
+| Last_name  | varchar(30) | YES  |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+________________________________________________________________________________________________________________________
+mysql> /* TASK 2 */
+
+mysql> /* Creating the Employee Table */
+mysql> create table Employee (
+    -> EmployeeID int primary key,
+    -> First_name varchar(30),
+    -> Last_name varchar(30),
+    -> Age int
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc Employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| EmployeeID | int         | NO   | PRI | NULL    |       |
+| First_name | varchar(30) | YES  |     | NULL    |       |
+| Last_name  | varchar(30) | YES  |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+________________________________________________________________________________________________________________________
+mysql> /* TASK 3 */
+
+mysql> /* Inserting five records to Person table */
+mysql> insert into Person values
+    -> (1, 'Purba', 'Das', 25),
+    -> (2, 'Rika', 'Maity', 22),
+    -> (3, 'Diya', 'Dey', 23),
+    -> (4, 'Arjya', 'Sen', 20),
+    -> (5, 'Navya', 'Dutta', 28);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Person Table */
+mysql> select * from Person;
++-----------+------------+-----------+------+
+| Person_ID | First_name | Last_name | Age  |
++-----------+------------+-----------+------+
+|         1 | Purba      | Das       |   25 |
+|         2 | Rika       | Maity     |   22 |
+|         3 | Diya       | Dey       |   23 |
+|         4 | Arjya      | Sen       |   20 |
+|         5 | Navya      | Dutta     |   28 |
++-----------+------------+-----------+------+
+5 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________
+mysql> /* TASK 4 */
+
+mysql> /*Inserting five records into the Employee table*/
+mysql> insert into Employee values
+    -> (501, 'Abir', 'Banerjee', 35),
+    -> (502, 'Pakhi', 'Gupta', 32),
+    -> (503, 'Neha', 'Roy', 33),
+    -> (504, 'Amit', 'Sharma', 34),
+    -> (505, 'Riya', 'Koley', 38);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Employee Table */
+mysql> select * from Employee;
++------------+------------+-----------+------+
+| EmployeeID | First_name | Last_name | Age  |
++------------+------------+-----------+------+
+|        501 | Abir       | Banerjee  |   35 |
+|        502 | Pakhi      | Gupta     |   32 |
+|        503 | Neha       | Roy       |   33 |
+|        504 | Amit       | Sharma    |   34 |
+|        505 | Riya       | Koley     |   38 |
++------------+------------+-----------+------+
+5 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________
+mysql> /* TASK 5 */
+
+mysql> /* Creating the Union of Person Table & Employee Table */ 
+mysql> select Person_ID, First_name, Last_name, Age FROM Person UNION
+    -> select EmployeeID AS Person_ID, First_name, Last_name, Age FROM Employee;
++-----------+------------+-----------+------+
+| Person_ID | First_name | Last_name | Age  |
++-----------+------------+-----------+------+
+|         1 | Purba      | Das       |   25 |
+|         2 | Rika       | Maity     |   22 |
+|         3 | Diya       | Dey       |   23 |
+|         4 | Arjya      | Sen       |   20 |
+|         5 | Navya      | Dutta     |   28 |
+|       501 | Abir       | Banerjee  |   35 |
+|       502 | Pakhi      | Gupta     |   32 |
+|       503 | Neha       | Roy       |   33 |
+|       504 | Amit       | Sharma    |   34 |
+|       505 | Riya       | Koley     |   38 |
++-----------+------------+-----------+------+
+10 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________
