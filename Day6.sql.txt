@@ -1,0 +1,89 @@
+mysql> /* DAY 6 */
+mysql> /* LAB 1 */
+
+mysql> /*Creating a Database and Table */
+mysql> create Database Ecommerce;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> show databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| bankaccountmanagementsystem |
+| ecommerce                   |
+| information_schema          |
+| mysql                       |
+| performance_schema          |
+| sakila                      |
+| studentmanagementsystem     |
+| sys                         |
+| world                       |
++-----------------------------+
+9 rows in set (0.03 sec)
+mysql> use ecommerce;
+Database changed
+
+mysql> /* Creating a new table named Ecommerce in the selected database */
+mysql> create table Ecommerce(
+    -> Product_ID varchar(20) primary key,
+    -> Product_name varchar(100),
+    -> Category varchar(50),
+    -> Sub_category varchar(50),
+    -> Original_price double,
+    -> Selling_price double,
+    -> Stock int,
+    -> Total_price_GST double(10,2)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC Ecommerce;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Product_ID      | varchar(20)  | NO   | PRI | NULL    |       |
+| Product_name    | varchar(100) | YES  |     | NULL    |       |
+| Category        | varchar(50)  | YES  |     | NULL    |       |
+| Sub_category    | varchar(50)  | YES  |     | NULL    |       |
+| Original_price  | double       | YES  |     | NULL    |       |
+| Selling_price   | double       | YES  |     | NULL    |       |
+| Stock           | int          | YES  |     | NULL    |       |
+| Total_price_GST | double(10,2) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql>  /* Inserting five records in Ecommerce */
+mysql> insert into Ecommerce values
+    -> ('P001', 'HP-101', 'Electronics', 'Laptop', '50000', '40499.990999999995',  10,  '51839.99'),
+    -> ('P002', 'Apple macBook', 'Electronics', 'Laptop', '69999.99', '58500',  5,  '74880.00'),
+    -> ('P003', 'Dell', 'electronics', 'Laptop', '50000', '43200',  8,  '55296.00'),
+    -> ('P004', 'Asus', 'electronics', 'Laptop', '40000', '34200',  6,  '43776.00'),
+    -> ('P005', 'BMW', 'Auto mobil', 'Car', '10000000', '15000000',  1, '15500000');
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Ecommerce table */
+mysql> select * from Ecommerce;
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| Product_ID | Product_name  | Category    | Sub_category | Original_price | Selling_price      | Stock | Total_price_GST |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| P001       | HP-101        | Electronics | Laptop       |          50000 | 40499.990999999995 |    10 |        51839.99 |
+| P002       | Apple macBook | Electronics | Laptop       |       69999.99 |              58500 |     5 |        74880.00 |
+| P003       | Dell          | electronics | Laptop       |          50000 |              43200 |     8 |        55296.00 |
+| P004       | Asus          | electronics | Laptop       |          40000 |              34200 |     6 |        43776.00 |
+| P005       | BMW           | Auto mobil  | Car          |       10000000 |           15000000 |     1 |     15500000.00 |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> /* Retrieve products for the special seasonal sale featuring electronics or with a price less than Rs. 70,000 */
+mysql> select * from Ecommerce where Category = 'Electronics' OR original_price < 70000;
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| Product_ID | Product_name  | Category    | Sub_category | Original_price | Selling_price      | Stock | Total_price_GST |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| P001       | HP-101        | Electronics | Laptop       |          50000 | 40499.990999999995 |    10 |        51839.99 |
+| P002       | Apple macBook | Electronics | Laptop       |       69999.99 |              58500 |     5 |        74880.00 |
+| P003       | Dell          | electronics | Laptop       |          50000 |              43200 |     8 |        55296.00 |
+| P004       | Asus          | electronics | Laptop       |          40000 |              34200 |     6 |        43776.00 |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+4 rows in set (0.00 sec)
+
