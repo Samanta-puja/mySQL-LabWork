@@ -1,0 +1,43 @@
+mysql> /* DAY 5 */
+__________________________________________________________________________________________________________________
+mysql> use studentmanagementsystem;
+Database changed
+
+mysql> select * from student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.02 sec)
+___________________________________________________________________________________________________________________
+mysql> /* LAB 1 */
+
+mysql> /* Retrieve student information sorted by FirstName in ascending order */
+mysql> select * from student ORDER BY FirstName ASC;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.00 sec)
+______________________________________________________________________________________________________________________
+mysql> /* LAB 2 */
+
+mysql> /* Retrieves the number of students grouped by gender */
+mysql> select Gender, COUNT(*) as NumberOfStudent from Student Group by gender;
++--------+-----------------+
+| Gender | NumberOfStudent |
++--------+-----------------+
+| Female |               2 |
+| Male   |               3 |
++--------+-----------------+
+2 rows in set (0.01 sec)
