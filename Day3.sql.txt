@@ -1,0 +1,129 @@
+DAY3
+_____________________________________________________________________________________________________________________________
+TASK1
+_____________________________________________________________________________________________________________________________
+mysql> /* Fetching all the records from Student table */
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | samantapuja@gmail.com | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.01 sec)
+
+mysql> /* updating the email of a student named Puja Samanta to 'puja@gmail.com' */
+mysql> UPDATE Student SET Email = 'puja@gmail.com' where FirstName = 'Puja' and LastName = 'Samanta';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> /*Retrieving all data from the Student table*/
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.00 sec)
+_______________________________________________________________________________________________________________________________
+TASK2
+_______________________________________________________________________________________________________________________________
+mysql> /* Fetching all the records from Instructor table */
+mysql> SELECT * from Instructor;
++--------------+-----------+----------+---------------------+
+| InstructorId | FirstName | LastName | Email               |
++--------------+-----------+----------+---------------------+
+| I01          | Ananya    | Maity    | ananya@gmail.com    |
+| I02          | Anamika   | Mondal   | anamika@gmail.com   |
+| I03          | Sanchaita | Mondal   | sanchaita@gmail.com |
+| I04          | Swagata   | Patra    | swagata@gmail.com   |
+| I05          | Bristi    | Maity    | bristi@gmail.com    |
++--------------+-----------+----------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> /*Update the Instructor table's email for a specific Instructor*/
+mysql> UPDATE Instructor SET Email = 'anubristi@gmail.com' where FirstName = 'Bristi' and LastName = 'Maity';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> /*Retrieving all data from the Instructor table*/
+mysql> SELECT * from Instructor;
++--------------+-----------+----------+---------------------+
+| InstructorId | FirstName | LastName | Email               |
++--------------+-----------+----------+---------------------+
+| I01          | Ananya    | Maity    | ananya@gmail.com    |
+| I02          | Anamika   | Mondal   | anamika@gmail.com   |
+| I03          | Sanchaita | Mondal   | sanchaita@gmail.com |
+| I04          | Swagata   | Patra    | swagata@gmail.com   |
+| I05          | Bristi    | Maity    | anubristi@gmail.com |
++--------------+-----------+----------+---------------------+
+5 rows in set (0.00 sec)
+_______________________________________________________________________________________________________________________________
+mysql> /* Inserting a new row into the Student table */
+mysql> INSERT into Student values
+    -> ('S06', 'Purmi', 'Samanta', '2000-01-01', 'female', 'purmi@gmail.com', 9876543210);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> /* Retrieving all data from the Student table */
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
+| S06       | Purmi     | Samanta  | 2000-01-01  | female | purmi@gmail.com       | 9876543210 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> /* Delete record from the Student table based on a specific condition */
+mysql> DELETE from Student where FirstName = 'Purmi';
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.00 sec)
+______________________________________________________________________________________________________________________________
+TASK3
+______________________________________________________________________________________________________________________________
+mysql> /* List the student whose first name starts with P  */
+mysql> SELECT * from Student where FirstName LIKE 'P%';
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email             | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com    | 7076787314 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com | 7872423542 |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT * from Student where LastName LIKE 'S%';
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com        | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * from Student where LastName LIKE 'P%';
+Empty set (0.00 sec)
