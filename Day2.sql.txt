@@ -1,0 +1,154 @@
+mysql> show databases;
++-------------------------+
+| Database                |
++-------------------------+
+| information_schema      |
+| mysql                   |
+| performance_schema      |
+| sakila                  |
+| studentmanagementsystem |
+| sys                     |
+| world                   |
++-------------------------+
+7 rows in set (0.00 sec)
+
+mysql> use studentmanagementsystem
+Database changed
+_____________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Student Table */
+mysql> insert into student values
+    -> ('S01', 'Puja', 'Samanta', '1999-04-19','Female', 'samantapuja@gmail.com', '7076787314'),
+    -> ('S02', 'Krishna', 'Samanta', '1937-11-04','Male', 'batakrishna@gmail.com', '7679714073'),
+    -> ('S03', 'Prakash', 'Samanta', '1996-04-02','Male', 'prakash@gmail.com', '7872423542'),
+    -> ('S04', 'Sulochana', 'Samanta', '1977-03-18','Female', 'sulochana@gmail.com', '7797540846'),
+    -> ('S05', 'Nabin', 'Samanta', '1969-03-15','Male', 'nabin@gmail.com', '7477885349');
+Query OK, 5 rows affected
+
+mysql> /* Fetching all the records from Student Table */
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| S01       | Puja      | Samanta  | 1999-04-19  | Female | samantapuja@gmail.com | 7076787314 |
+| S02       | Krishna   | Samanta  | 1937-11-04  | Male   | batakrishna@gmail.com | 7679714073 |
+| S03       | Prakash   | Samanta  | 1996-04-02  | Male   | prakash@gmail.com     | 7872423542 |
+| S04       | Sulochana | Samanta  | 1977-03-18  | Female | sulochana@gmail.com   | 7797540846 |
+| S05       | Nabin     | Samanta  | 1969-03-15  | Male   | nabin@gmail.com       | 7477885349 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+5 rows in set (0.00 sec)
+_____________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Course table */
+mysql> insert into Course values
+    -> ('C01', 'Data Visualization', 7),
+    -> ('C02', 'Python', 9),
+    -> ('C03', 'MySQL', 6),
+    -> ('C04', 'PowerBI', 8),
+    -> ('C05', 'JAVA', 7);
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Course table */
+mysql> SELECT * from Course;
++----------+--------------------+---------+
+| CourseID | CourseTiyle        | Credits |
++----------+--------------------+---------+
+| C01      | Data Visualization |       7 |
+| C02      | Python             |       9 |
+| C03      | MySQL              |       6 |
+| C04      | PowerBI            |       8 |
+| C05      | JAVA               |       7 |
++----------+--------------------+---------+
+5 rows in set (0.00 sec)
+______________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Instructor table */
+mysql> insert into Instructor values
+    -> ('I01', 'Ananya', 'Maity', 'ananya@gmail.com'),
+    -> ('I02', 'Anamika', 'Mondal', 'anamika@gmail.com'),
+    -> ('I03', 'Sanchaita', 'Mondal', 'sanchaita@gmail.com'),
+    -> ('I04', 'Swagata', 'Patra', 'swagata@gmail.com'),
+    -> ('I05', 'Bristi', 'Maity', 'bristi@gmail.com');
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Instructor table */
+mysql> SELECT * from Instructor;
++--------------+-----------+----------+---------------------+
+| InstructorId | FirstName | LastName | Email               |
++--------------+-----------+----------+---------------------+
+| I01          | Ananya    | Maity    | ananya@gmail.com    |
+| I02          | Anamika   | Mondal   | anamika@gmail.com   |
+| I03          | Sanchaita | Mondal   | sanchaita@gmail.com |
+| I04          | Swagata   | Patra    | swagata@gmail.com   |
+| I05          | Bristi    | Maity    | bristi@gmail.com    |
++--------------+-----------+----------+---------------------+
+5 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Enrollment table */
+mysql> insert into Enrollment values
+    -> ('E01', '2023-08-19', 'S01', 'C01', 'I01'),
+    -> ('E02', '2023-09-19', 'S02', 'C02', 'I02'),
+    -> ('E03', '2023-10-19', 'S03', 'C03', 'I03'),
+    -> ('E04', '2023-11-19', 'S04', 'C04', 'I04'),
+    -> ('E05', '2023-12-19', 'S05', 'C05', 'I05');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Enrollment table */
+mysql> SELECT * FROM Enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | StudentID | CourseID | InstructorID |
++--------------+----------------+-----------+----------+--------------+
+| E01          | 2023-08-19     | S01       | C01      | I01          |
+| E02          | 2023-09-19     | S02       | C02      | I02          |
+| E03          | 2023-10-19     | S03       | C03      | I03          |
+| E04          | 2023-11-19     | S04       | C04      | I04          |
+| E05          | 2023-12-19     | S05       | C05      | I05          |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Score table*/
+mysql> insert into Score values
+    -> ('SC01', 'C01', 'S01', '2023-04-11', 80),
+    -> ('SC02', 'C02', 'S02', '2023-04-15', 89),
+    -> ('SC03', 'C03', 'S03', '2023-04-19', 84),
+    -> ('SC04', 'C04', 'S04', '2023-04-27', 81),
+    -> ('SC05', 'C05', 'S05', '2023-05-02', 85);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Score table*/
+mysql> SELECT * from Score;
++---------+----------+-----------+------------+----------------+
+| ScoreID | CourseID | StudentID | DateOfExam | CreditObtained |
++---------+----------+-----------+------------+----------------+
+| SC01    | C01      | S01       | 2023-04-11 |             80 |
+| SC02    | C02      | S02       | 2023-04-15 |             89 |
+| SC03    | C03      | S03       | 2023-04-19 |             84 |
+| SC04    | C04      | S04       | 2023-04-27 |             81 |
+| SC05    | C05      | S05       | 2023-05-02 |             85 |
++---------+----------+-----------+------------+----------------+
+5 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________________
+mysql> /* Inserting five records in Feedback table */
+mysql> insert into Feedback values
+    -> ('FB01', 'S01', '2023-10-11', 'Ananya Maity', 'Instructor was supportive, made learning fun.'),
+    -> ('FB02', 'S02', '2023-10-15', 'Anamika Mondal', 'Clear explanations, enjoyed the sessions.'),
+    -> ('FB03', 'S03', '2023-10-19', 'Sanchaita Mondal', 'Helped me understand complex concepts easily.'),
+    -> ('FB04', 'S04', '2023-10-27', 'Swagata Patra', 'Excellent teaching style, very engaging.'),
+    -> ('FB05', 'S05', '2023-11-02', 'Bristi Maity', 'Great instructor, very knowledgeable.');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Fetching all the records from Feedback table*/
+mysql> SELECT * From Feedback;
++------------+-----------+------------+------------------+-----------------------------------------------+
+| FeedbackID | StudentID | Date       | InstructorName   | FeedbackText                                  |
++------------+-----------+------------+------------------+-----------------------------------------------+
+| FB01       | S01       | 2023-10-11 | Ananya Maity     | Instructor was supportive, made learning fun. |
+| FB02       | S02       | 2023-10-15 | Anamika Mondal   | Clear explanations, enjoyed the sessions.     |
+| FB03       | S03       | 2023-10-19 | Sanchaita Mondal | Helped me understand complex concepts easily. |
+| FB04       | S04       | 2023-10-27 | Swagata Patra    | Excellent teaching style, very engaging.      |
+| FB05       | S05       | 2023-11-02 | Bristi Maity     | Great instructor, very knowledgeable.         |
++------------+-----------+------------+------------------+-----------------------------------------------+
+5 rows in set (0.00 sec)
+_______________________________________________________________________________________________________________________________
