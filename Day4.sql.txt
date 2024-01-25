@@ -1,0 +1,117 @@
+mysql> /*Creating a Database and Table */
+mysql> create Database BankAccountManagementSystem;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> show databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| bankaccountmanagementsystem |
+| information_schema          |
+| mysql                       |
+| performance_schema          |
+| sakila                      |
+| studentmanagementsystem     |
+| sys                         |
+| world                       |
++-----------------------------+
+8 rows in set (0.03 sec)
+
+mysql> use bankaccountmanagementsystem;
+Database changed
+
+mysql> /* Creating a new table named BankAccount in the selected database */
+mysql> create table BankAccount(
+    -> Account_ID int primary key,
+    -> Account_holder_name varchar(40),
+    -> Account_balance int
+    -> );
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> /* Describing the structure of the BankAccount table */
+mysql> DESC BankAccount;
++---------------------+-------------+------+-----+---------+-------+
+| Field               | Type        | Null | Key | Default | Extra |
++---------------------+-------------+------+-----+---------+-------+
+| Account_ID          | int         | NO   | PRI | NULL    |       |
+| Account_holder_name | varchar(40) | YES  |     | NULL    |       |
+| Account_balance     | int         | YES  |     | NULL    |       |
++---------------------+-------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+__________________________________________________________________________________________________________________________________
+mysql> /* TASK1: INSERT DATA */
+
+mysql> /* Inserting Data into BankAccount Table */
+mysql> insert into BankAccount VALUES
+    -> (98765001, 'Rittu Maity', 10000),
+    -> (98765002, 'Purba Das', 12000),
+    -> (98765003, 'Piu Patel', 15000),
+    -> (98765004, 'Abir Samanta', 13000),
+    -> (98765005, 'Mitan Sarkar', 11000);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> /* Retrieving all data from the BankAccount table */
+mysql> select * from BankAccount;
++------------+---------------------+-----------------+
+| Account_ID | Account_holder_name | Account_balance |
++------------+---------------------+-----------------+
+|   98765001 | Rittu Maity         |           10000 |
+|   98765002 | Purba Das           |           12000 |
+|   98765003 | Piu Patel           |           15000 |
+|   98765004 | Abir Samanta        |           13000 |
+|   98765005 | Mitan Sarkar        |           11000 |
++------------+---------------------+-----------------+
+5 rows in set (0.00 sec)
+_________________________________________________________________________________________________________________________________
+mysql> /* TASK2:RETRIEVING DATA */
+
+mysql> /* Retrieving account_holder_name and account_balance of all account holders */
+mysql> select Account_holder_name, Account_balance
+    -> from BankAccount;
++---------------------+-----------------+
+| Account_holder_name | Account_balance |
++---------------------+-----------------+
+| Rittu Maity         |           10000 |
+| Purba Das           |           12000 |
+| Piu Patel           |           15000 |
+| Abir Samanta        |           13000 |
+| Mitan Sarkar        |           11000 |
++---------------------+-----------------+
+5 rows in set (0.00 sec)
+_________________________________________________________________________________________________________________________________
+mysql> /* TASK3: FILTERING DATA */
+
+mysql> /* Retrieving account_holder_name and account_balance where the account_balance is more than 12,000 */
+mysql> select Account_holder_name, Account_balance
+    -> from BankAccount
+    -> where Account_balance > 12000;
++---------------------+-----------------+
+| Account_holder_name | Account_balance |
++---------------------+-----------------+
+| Piu Patel           |           15000 |
+| Abir Samanta        |           13000 |
++---------------------+-----------------+
+2 rows in set (0.00 sec)
+___________________________________________________________________________________________________________________________________
+mysql> /* TASK4: UPDATING DATA */
+
+mysql> /* Updating the account_balance of the account holder with ID 98765004 */
+mysql> update BankAccount
+    -> set Account_balance = 18000 where Account_ID = 98765004;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> /* Retrieving all data from the BankAccount table after the update */
+mysql> select * from BankAccount;
++------------+---------------------+-----------------+
+| Account_ID | Account_holder_name | Account_balance |
++------------+---------------------+-----------------+
+|   98765001 | Rittu Maity         |           10000 |
+|   98765002 | Purba Das           |           12000 |
+|   98765003 | Piu Patel           |           15000 |
+|   98765004 | Abir Samanta        |           18000 |
+|   98765005 | Mitan Sarkar        |           11000 |
++------------+---------------------+-----------------+
+5 rows in set (0.00 sec)
+______________________________________________________________________________________________________________________________________
